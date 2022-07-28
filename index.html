@@ -5,15 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="./script.js"></script>
     <title>Shopping list</title>
 </head>
 
 <body>
+
+    <header>
+        <p>Welcome to the shop!</p>
+
+        <div>Sort products by price: <button id="sortByPriceLowestFirst">Lowest First</button> <button
+            id="sortByPriceHighestFirst">Highest First</button></div>
+    </header>
     <section id="shop">
 
-        <div class="allProductsList">
+        <div id="allProductsList">
             <ul class="productItem">
                 <li class="productItemDescription">
                     <ul>
@@ -25,6 +36,7 @@
                 </li>
                 <li class="productItemOptions">
                     <ul>
+                        <li class="productItemSum">Total: <span class="temName itemMainInfo"></span>$</li>
                         <li><button class="addProduct">Add to cart</button></li>
                         <li><button class="deleteProduct">Delete</button> </li>
                     </ul>
@@ -34,9 +46,13 @@
     </section>
 
     <section id="cart">
-        <div>Sort products by price <button id="sortByPriceLowestFirst">Lowest First</button> <button id="sortByPriceHighestFirst">Highest First</button></div>
-        <div> <p>Your total check is <span id="userTotalCheck">0$</span></p>  </div>
-        <div> <p>Unselected products:<span id="userUnselectedProducts">0$</span></p></div>
+        
+        <div>
+            <p>Your total check is <span id="userTotalCheck">0$</span></p>
+        </div>
+        <div>
+            <p>Unselected products:<span id="userUnselectedProducts">0$</span></p>
+        </div>
 
 
     </section>

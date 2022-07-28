@@ -1,0 +1,80 @@
+*{
+    font-family: 'Azeret Mono', monospace;
+}
+
+body{
+    background-color: #d4ff0085;
+}
+
+header{
+    background-color: #04da5c;
+    color: white;
+    text-transform: uppercase;
+    font-size: larger;
+    width: 100%;
+    padding: 40px;
+    line-height: 3;
+    text-align: center;
+}
+
+header>p{
+    font-size: larger;
+    text-shadow: 2px 2px black;
+    
+}
+
+#allProductsList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 40px;
+}
+
+.productItem{
+    
+    background-color: aliceblue;
+    border: 9px fuchsia solid;
+    padding: 25px;
+    box-shadow: 6px 9px black;
+    line-height: 3;
+}
+
+.productItemOptions{
+    border: 5px solid grey;
+    padding: 10px;
+}
+
+.itemMainInfo{
+    font-weight: 900;
+    text-align: end;
+    font-size: larger;
+}
+
+.addProduct{
+    background-color: green;
+    color: white;
+    height: 40px;
+}
+
+.deleteProduct{
+    color: white;
+    background-color: grey;
+}
+
+.deleteProduct:hover{
+    background-color: rgb(27, 26, 26);
+}
+
+.addProduct:hover{
+    background-color: darkgreen;
+}
+
+#cart{
+    
+    background-color: navy;
+    color: white;
+    width: 100%;
+    padding: 40px;
+    line-height: 3;
+    font-size: large;
+}

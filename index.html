@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./script.js"></script>
+    <title>Shopping list</title>
+</head>
+
+<body>
+    <section id="shop">
+
+        <div class="allProductsList">
+            <ul class="productItem">
+                <li class="productItemDescription">
+                    <ul>
+                        <li class="productName">Name: </li>
+                        <li class="productAmount">Amount: </li>
+                        <li class="productPrice">Price: </li>
+                        <li class="productBought">Added: </li>
+                    </ul>
+                </li>
+                <li class="productItemOptions">
+                    <ul>
+                        <li><button class="addProduct">Add to cart</button></li>
+                        <li><button class="deleteProduct">Delete</button> </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cart">
+        <div>Sort products by price <button id="sortByPriceLowestFirst">Lowest First</button> <button id="sortByPriceHighestFirst">Highest First</button></div>
+        <div> <p>Your total check is <span id="userTotalCheck">0$</span></p>  </div>
+        <div> <p>Unselected products:<span id="userUnselectedProducts">0$</span></p></div>
+
+
+    </section>
+</body>
+
+</html>

@@ -37,7 +37,7 @@ const watermelons = new Product("Watermelons", 150, 1, true);
 
 const allProductsList = [apples, bananas, nuts, oranges, watermelons];
 
-//array fo bought prod  cart todo
+//array for cart
 
 const cart = [];
 
@@ -52,12 +52,29 @@ function countProductsInCart() {
     }
 
     document.querySelector('#userTotalCheck').innerHTML = cartSum;
+    //addProductInTable()
+
+
 }
 
+// function addProductInTable(){
+//     let tableContent = '';
+//     for (let k = 0; k < cart.length, k++;) {
+//         alert(cart);
+//          tableContent += `
+//             <tr>
+//             <td>${cart[k].name}</td>
+//             <td>${cart[k].price}$</td>
+//             </tr>`
+//     }
+
+//     document.querySelector('#cartTable').innerHTML = tableContent;
+// }
 
 
 
-//create products layout
+
+//create layout for loading products
 
 function createProductsLayout() {
 
@@ -67,48 +84,23 @@ function createProductsLayout() {
         let item = allProductsList[i];
 
         document.querySelector('#allProductsList').innerHTML += `<div class="productItem" id="${allProductsList[i].name}"></div>`
-        document.querySelector(`#shop`).addEventListener('click', () => {reloadProduct(allProductsList[i])});
+        document.querySelector(`#shop`).addEventListener('click', () => { reloadProduct(allProductsList[i]) });
 
         reloadProduct(item);
 
-        //     <div class="productItemDescription">
-        //         <ul>
-        //             <li class="productName">Name: <span class="itemName itemMainInfo"> ${allProductsList[i].name}</span> </li>
-        //             <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${allProductsList[i].amount}</span></li>
-        //             <li class="productPrice">Price: <span class="itemPrice itemMainInfo">${allProductsList[i].price}</span></li>
-        //             <li class="productBought">Added: <span class="itemBought itemMainInfo">${allProductsList[i].bought}</span></li>
-        //             <li class="productItemSum">Total: <span class="temName itemMainInfo">${allProductsList[i].productItemSum()}</span>$</li>
-        //         </ul>
-        //     </div>
-        //     <div class="productItemOptions">
-        //       <button class="addProduct1 id="${item.name} ${allProductsList[i].price}">Change</button>
-        //     </div>
-        // </div>`
-
-        // // let parent = document.querySelector(`#${item.name}`);
-       
-        // // let changeBtn = document.createElement("button");
-        // // changeBtn.innerHTML = "changeBtn";
-        // // changeBtn.className = "changeBtn";
-        
-        // // parent.querySelector('.productItemOptions').appendChild(changeBtn);
-        
-        // // let obj = document.querySelector(`#${allProductsList[i].name}`)
-        // // obj.addEventListener('click', () => alert(allProductsList[i].name), false);
-
-        
     }
 }
 
 
 function reloadProduct(item) {
 
-    document.querySelector(`#${item.name}`).innerHTML = `<div class="productItemDescription">
+    let productCard = document.querySelector(`#${item.name}`);
+
+    productCard.innerHTML = `<div class="productItemDescription">
                 <ul>
                     <li class="productName">Name: <span class="itemName itemMainInfo"> ${item.name}</span> </li>
-                    <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${item.amount}</span></li>
                     <li class="productPrice">Price: <span class="itemPrice itemMainInfo">${item.price}</span></li>
-                    <li class="productBought">Added: <span class="itemBought itemMainInfo">${item.bought}</span></li>
+                    <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${item.amount}</span></li>
                     <li class="productItemSum">Total: <span class="temName itemMainInfo">${item.productItemSum()}</span>$</li>
                 </ul>
             </div>
@@ -117,19 +109,29 @@ function reloadProduct(item) {
             </div>
         </ul>`
 
+
+    if (item.amount <= 0) {
+        productCard.classList.add("productNotAdded");
+    }
+    else {
+        productCard.classList.remove("productNotAdded");
+    }
+
+
+
     let parent = document.querySelector(`#${item.name}`);
 
-        let addBtn = document.createElement("button");
-        addBtn.innerHTML = "Add to cart RL"; 
-        addBtn.className = "addProduct";
-        parent.querySelector('.productItemOptions').appendChild(addBtn);
-        addBtn.addEventListener('click', () => { item.addProductToCart() })
+    let addBtn = document.createElement("button");
+    addBtn.innerHTML = "Add more!";
+    addBtn.className = "addProduct";
+    parent.querySelector('.productItemOptions').appendChild(addBtn);
+    addBtn.addEventListener('click', () => { item.addProductToCart() })
 
-        let delBtn = document.createElement("button");
-        delBtn.innerHTML = "Delete RL";
-        delBtn.className = "deleteProduct";
-        parent.querySelector('.productItemOptions').appendChild(delBtn);
-        delBtn.addEventListener('click', () => { item.deleteFromCart() })
+    let delBtn = document.createElement("button");
+    delBtn.innerHTML = "Delete";
+    delBtn.className = "deleteProduct";
+    parent.querySelector('.productItemOptions').appendChild(delBtn);
+    delBtn.addEventListener('click', () => { item.deleteFromCart() })
 }
 
 
@@ -137,6 +139,11 @@ createProductsLayout();
 
 
 countProductsInCart();
+
+
+
+
+
 
 
 

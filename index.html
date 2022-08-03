@@ -10,7 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <script defer src="./data.js"></script>
+    <script defer src="./product.js"></script>
     <script defer src="./script.js"></script>
+
     <title>Shopping list</title>
 </head>
 
@@ -25,8 +28,8 @@
     <section id="shop">
 
         <div id="allProductsList">
-            <ul class="productItem">
-                <li class="productItemDescription">
+            <!-- <ul class="productItem">
+                <li class="productItemDescriptio" id="anon">
                     <ul>
                         <li class="productName">Name: </li>
                         <li class="productAmount">Amount: </li>
@@ -34,21 +37,21 @@
                         <li class="productBought">Added: </li>
                     </ul>
                 </li>
-                <li class="productItemOptions">
+                <li class="productItemOption">
                     <ul>
                         <li class="productItemSum">Total: <span class="temName itemMainInfo"></span>$</li>
-                        <li><button class="addProduct">Add to cart</button></li>
+                        <li><button onclick="myFunction()" class="addProduct1 ">Add to cart</button></li>
                         <li><button class="deleteProduct">Delete</button> </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </section>
 
     <section id="cart">
         
         <div>
-            <p>Your total check is <span id="userTotalCheck">0$</span></p>
+            <p>Your total check is <span id="userTotalCheck">0</span>$</p>
         </div>
         <div>
             <p>Unselected products:<span id="userUnselectedProducts">0$</span></p>

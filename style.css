@@ -30,6 +30,20 @@ header>p{
     padding: 40px;
 }
 
+@media screen and (max-width: 1040px) {
+
+    #allProductsList{
+        grid-template-columns: 1fr 1fr;}
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    #allProductsList{
+        grid-template-columns: 1fr;}
+    
+}
+
 .productItem{
     
     background-color: aliceblue;
@@ -40,8 +54,11 @@ header>p{
 }
 
 .productItemOptions{
-    border: 5px solid grey;
-    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .itemMainInfo{

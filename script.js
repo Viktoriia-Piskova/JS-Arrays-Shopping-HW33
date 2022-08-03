@@ -1,62 +1,147 @@
 'use strict'
-
-
 //create product list
 
-class ProductItem {
-    constructor(productName, productPrice, productAmount,productBought) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productAmount = productAmount;
-        this.productBought = productBought;
+class Product {
+    constructor(name, price, amount, bought) {
+        Object.assign(this, { name, price, amount, bought })
     }
+
     productItemSum() {
-        return this.productPrice * this.productAmount;
+        return this.price * this.amount;
     }
-    addProduct(){
-        return this.productBought = true;
+
+    addProductToCart() {
+        this.bought = true;
+        this.amount += 1;
+        reloadProduct(this)
+        countProductsInCart();
+
+
     }
-    deleteProduct(){
-        return this.productBought = false;
+
+    deleteFromCart() {
+        this.bought = false;
+        this.amount = 0;
+        reloadProduct(this)
+        countProductsInCart();
+
     }
 }
 
 
-const apples = new ProductItem("Apples", 5, 10, true);
-const bananas = new ProductItem("Bananas", 10, 2, true);
-const nuts = new ProductItem("Nuts", 10, 50, true);
-const oranges = new ProductItem("Oranges", 12, 3, false);
-const watermelons = new ProductItem("Watermelons", 150, 1, true);
+const apples = new Product("Apples", 5, 10, true);
+const bananas = new Product("Bananas", 10, 2, false);
+const nuts = new Product("Nuts", 10, 50, false);
+const oranges = new Product("Oranges", 12, 3, false);
+const watermelons = new Product("Watermelons", 150, 1, true);
 
 const allProductsList = [apples, bananas, nuts, oranges, watermelons];
 
+//array fo bought prod  cart todo
+
+const cart = [];
+
+function countProductsInCart() {
+    let cartSum = 0;
+
+    for (let j = 0; j < allProductsList.length; j++) {
+        if (allProductsList[j].bought == true) {
+            cart.push(allProductsList[j]);
+            cartSum += allProductsList[j].productItemSum();
+        }
+    }
+
+    document.querySelector('#userTotalCheck').innerHTML = cartSum;
+}
+
+
+
+
 //create products layout
 
-function createProductsLayout(){
-    for (let i = 0; i < allProductsList.length; i++){
-        document.querySelector('#allProductsList').innerHTML += `<ul class="productItem">
-        <li class="productItemDescription">
-            <ul>
-                <li class="productName">Name: <span class="itemName itemMainInfo"> ${allProductsList[i].productName}</span> </li>
-                <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${allProductsList[i].productAmount}</span></li>
-                <li class="productPrice">Price: <span class="itemPrice itemMainInfo">${allProductsList[i].productPrice}</span></li>
-                <li class="productBought">Added: <span class="itemBought itemMainInfo">${allProductsList[i].productBought}</span></li>
-            </ul>
-        </li>
-        <li class="productItemOptions">
-            <ul>
-                <li class="productItemSum">Total: <span class="temName itemMainInfo">${allProductsList[i].productItemSum()}</span>$</li>
-                <li><button class="addProduct">Add to cart</button></li>
-                <li><button class="deleteProduct">Delete</button> </li>
-            </ul>
-        </li>
-    </ul>`
+function createProductsLayout() {
+
+
+    for (let i = 0; i < allProductsList.length; i++) {
+
+        let item = allProductsList[i];
+
+        document.querySelector('#allProductsList').innerHTML += `<div class="productItem" id="${allProductsList[i].name}"></div>`
+        document.querySelector(`#shop`).addEventListener('click', () => {reloadProduct(allProductsList[i])});
+
+        reloadProduct(item);
+
+        //     <div class="productItemDescription">
+        //         <ul>
+        //             <li class="productName">Name: <span class="itemName itemMainInfo"> ${allProductsList[i].name}</span> </li>
+        //             <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${allProductsList[i].amount}</span></li>
+        //             <li class="productPrice">Price: <span class="itemPrice itemMainInfo">${allProductsList[i].price}</span></li>
+        //             <li class="productBought">Added: <span class="itemBought itemMainInfo">${allProductsList[i].bought}</span></li>
+        //             <li class="productItemSum">Total: <span class="temName itemMainInfo">${allProductsList[i].productItemSum()}</span>$</li>
+        //         </ul>
+        //     </div>
+        //     <div class="productItemOptions">
+        //       <button class="addProduct1 id="${item.name} ${allProductsList[i].price}">Change</button>
+        //     </div>
+        // </div>`
+
+        // // let parent = document.querySelector(`#${item.name}`);
+       
+        // // let changeBtn = document.createElement("button");
+        // // changeBtn.innerHTML = "changeBtn";
+        // // changeBtn.className = "changeBtn";
+        
+        // // parent.querySelector('.productItemOptions').appendChild(changeBtn);
+        
+        // // let obj = document.querySelector(`#${allProductsList[i].name}`)
+        // // obj.addEventListener('click', () => alert(allProductsList[i].name), false);
+
+        
     }
 }
 
+
+function reloadProduct(item) {
+
+    document.querySelector(`#${item.name}`).innerHTML = `<div class="productItemDescription">
+                <ul>
+                    <li class="productName">Name: <span class="itemName itemMainInfo"> ${item.name}</span> </li>
+                    <li class="productAmount">Amount: <span class="itemAmount itemMainInfo">${item.amount}</span></li>
+                    <li class="productPrice">Price: <span class="itemPrice itemMainInfo">${item.price}</span></li>
+                    <li class="productBought">Added: <span class="itemBought itemMainInfo">${item.bought}</span></li>
+                    <li class="productItemSum">Total: <span class="temName itemMainInfo">${item.productItemSum()}</span>$</li>
+                </ul>
+            </div>
+            <div class="productItemOptions">
+                   
+            </div>
+        </ul>`
+
+    let parent = document.querySelector(`#${item.name}`);
+
+        let addBtn = document.createElement("button");
+        addBtn.innerHTML = "Add to cart RL"; 
+        addBtn.className = "addProduct";
+        parent.querySelector('.productItemOptions').appendChild(addBtn);
+        addBtn.addEventListener('click', () => { item.addProductToCart() })
+
+        let delBtn = document.createElement("button");
+        delBtn.innerHTML = "Delete RL";
+        delBtn.className = "deleteProduct";
+        parent.querySelector('.productItemOptions').appendChild(delBtn);
+        delBtn.addEventListener('click', () => { item.deleteFromCart() })
+}
+
+
 createProductsLayout();
 
-//events for adding and deleting products
+
+countProductsInCart();
+
+
+
+
+
 
 
 

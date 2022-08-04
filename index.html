@@ -20,10 +20,8 @@
 <body>
 
     <header>
-        <p>Welcome to the shop!</p>
-
-        <div>Sort products by price: <button id="sortByPriceLowestFirst">Lowest First</button> <button
-            id="sortByPriceHighestFirst">Highest First</button></div>
+             <div>Sort products by price: <button id="sortByPriceLowestFirst">Lowest</button> <button
+            id="sortByPriceHighestFirst">Highest</button></div>
     </header>
     <section id="shop">
 
@@ -35,26 +33,28 @@
     <section id="cart">
         <div>
             <table>
+                <thead>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td><b>Price</b></td>
+                        <td><b>Amount</b></td>
+                        <td><b>Sum</b></td>
+                    </tr>
+
+                </thead>
                 <tbody id="cartTable">
+                
                 <tr>
-                    <td><b>Name</b></td>
-                    <td><b>Sum</b></td>
-                </tr>
-                <tr>
-                    <td>Add something</td>
-                    <td>0$</td>
+                    <td>Please, add at least one product</td>
+                    
                 </tr>
             </tbody>  
             </table>
         </div>
-        <div>
+        <div class="cart-total">
             <p>Your total check is <span id="userTotalCheck">0</span>$</p>
         </div>
-        <!-- <div>
-            <p>Unselected products:<span id="userUnselectedProducts">0$</span></p>
-        </div> -->
-
-
+        
     </section>
 </body>
 

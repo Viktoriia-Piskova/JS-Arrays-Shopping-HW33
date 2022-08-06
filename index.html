@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./data.js"></script>
+    <script defer src="./product.js"></script>
+    <script defer src="./script.js"></script>
+
+    <title>Shopping list</title>
+</head>
+
+<body>
+
+    <header>
+             <div>Sort products by price: <button id="sortByPriceLowestFirst">Lowest</button> <button
+            id="sortByPriceHighestFirst">Highest</button></div>
+    </header>
+    <section id="shop">
+
+        <div id="allProductsList">
+
+        </div>
+    </section>
+
+    <section id="cart">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td><b>Price</b></td>
+                        <td><b>Amount</b></td>
+                        <td><b>Sum</b></td>
+                    </tr>
+
+                </thead>
+                <tbody id="cartTable">
+                
+                <tr>
+                    <td>Please, add at least one product</td>
+                    
+                </tr>
+            </tbody>  
+            </table>
+        </div>
+        <div class="cart-total">
+            <p>Your total check is <span id="userTotalCheck">0</span>$</p>
+        </div>
+        
+    </section>
+</body>
+
+</html>
